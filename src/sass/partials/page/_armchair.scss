@@ -1,0 +1,82 @@
+﻿@import "../../modules/_base.scss";
+/*Chair Image on page*/
+.page__chairimg,
+.panel__chairthumb,
+.logo-box__chair{
+    will-change:transform;
+    @include animation-timing-function(ease-out);
+    @include animation-duration(2s);
+    @include animation-iteration-count(1);
+}
+
+.page__chairimg{
+    width:100%;
+    height:auto;
+}
+
+.page__chairimg,
+.panel__chairthumb{
+    &.active{
+        @include animation-name(armchair-small);
+    }
+}
+
+.logo-box__chair{
+    &.animated{
+        @include animation-name(armchair);
+    }
+}
+
+
+
+
+
+.page__chair{
+    margin-bottom:65px;
+
+    .page__chairimg{
+        width:46px;
+    }
+}
+
+
+@include keyframes(armchair){
+    0%, 100%{
+        @include transform(rotate(0) translateX(0));
+    }
+    12.5%{
+        @include transform(rotate(10deg) translateX(10px));
+    }
+    
+    37.5%{
+        @include transform(rotate(-8deg) translateX(-8px));
+    }
+   
+    62.5%{
+        @include transform(rotate(6deg) translateX(6px));
+    }
+    87.5%{
+        @include transform(rotate(-4deg) translateX(-4px));
+    }
+}
+
+@include keyframes(armchair-small){
+    0%{
+        @include transform(rotate(0) translateX(0));
+    }
+    12.5%{
+        @include transform(rotate(10deg) translateX(6px));
+    }
+    
+    37.5%{
+        @include transform(rotate(-8deg) translateX(-4px));
+    }
+   
+    62.5%{
+        @include transform(rotate(6deg) translateX(2px));
+    }
+    87.5%{
+        @include transform(rotate(-4deg) translateX(-1px));
+    }
+}
+

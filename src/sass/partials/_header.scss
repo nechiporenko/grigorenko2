@@ -1,0 +1,165 @@
+@import "../modules/base";
+/*Site Header*/
+.header{
+    width:100%;
+    position:fixed;
+    left:0; top:0;
+    z-index:1000;
+    background:$primary;
+    font-family:$font-regular;
+}
+
+
+.header__inner{
+    @extend .g-container;
+
+    
+
+    @include media($desktop){//на этом разрешении будем центрировать кнопку меню и языки по центру бок.панелей
+        padding-left:0;
+        padding-right:0;
+    }
+}
+
+
+
+
+.header--home{
+    background:$primary-dark;
+    background:rgba($primary-dark, .8);
+}
+
+
+
+/*Menu toggle button*/
+.header__btn{
+    float:left;
+    height:$header-height-small;
+    line-height:$header-height-small;
+    margin:0;
+    padding:0 8px;
+    background:none;
+    border:none;
+    @include font-size(18px);
+    color:$text-color;
+    text-align:center;
+    @include transition(transform .3s ease);
+
+    &:hover,
+    &:focus,
+    &.active{
+        color:#fff;
+        outline:0;
+    }
+
+    [class^="icon-"], [class*=" icon-"]{
+        margin:0;
+    }
+
+    &.active{
+        @include transform(rotate(-90deg));
+    }
+
+    @include media($tablet){
+        height:$header-height;
+        line-height:$header-height;
+    }
+
+    @include media($desktop){
+        margin-left:$panel-width/2 - 17px;
+    }
+}
+
+.header--home{
+    .header__btn{
+        &:hover,
+        &:focus,
+        &.active{
+            color:$primary;
+        }
+
+        @include media($tablet){
+            height:66px;
+            line-height:66px;
+        }
+    }
+}
+
+/*Header Social Links*/
+.h-social{
+    @extend .g-clearlist;
+    float:right;
+    font-size:0;
+}
+.h-social__item{
+    display:inline-block;
+    @include font-size(15px);
+}
+.h-social__link{
+    display:block;
+    padding:10px 8px;
+    color:$text-color;
+    line-height:1.1;
+    text-decoration:none;
+
+    &:hover,
+    &:active{
+        color:#fff;
+    }
+
+    [class^="icon-"], [class*=" icon-"]{
+        margin:0;
+    }
+}
+
+.header--home{
+    .h-social__link{
+        &:hover,
+        &:active{
+            color:$primary;
+        }
+
+        @include media($tablet){
+            padding:24px 8px;
+        }
+    }
+}
+
+/*Header Lang*/
+.h-lang{
+    @extend .h-social;
+
+    @include media($desktop){
+        width:$panel-width;
+        text-align:center;
+    }
+}
+.h-lang__item{
+    display:inline-block;
+    @include font-size(16px);
+}
+.h-lang__link{
+    @extend .h-social__link;
+    padding:10px 8px;
+
+    &.current{
+        color:#fff;
+        cursor:default;
+    }
+}
+
+.header--home{
+    .h-lang{
+        margin-left:26px;
+        width:auto;
+
+        @include media($desktop){
+            margin-right:72px;
+        }
+    }
+    .h-lang__link{
+        &.current{
+            color:$primary;
+        }
+    }
+}

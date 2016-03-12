@@ -1,0 +1,146 @@
+﻿@import "../modules/_base.scss";
+/*Menu*/
+.page__panel--menu{
+    position:fixed;
+    left:-$panel-width;
+    z-index:900;
+    will-change:left;
+    @include transition(left .3s ease);
+    background-color:#000;
+    background-color:rgba(#000, 0.5);
+
+    &.active{
+        left:0;
+    }
+
+
+    @include media($desktop){
+        position:absolute;
+    }
+
+
+    .panel-logo{
+        height:$panel-logo-height-small;
+        line-height:$panel-logo-height-small;
+
+       
+        @include media(min-height 360px){
+            height:$panel-logo-height;
+            line-height:$panel-logo-height;
+        }
+
+        @include media($desktop){//на десктопе покажем лого в боковой панели
+            display:none;
+        }
+    }
+
+}
+
+.page__panel--menu-alt{
+    background-color:$primary-dark;
+}
+
+
+.no-js{
+    @include media($desktop){
+        .page__panel--menu{
+            left:0;
+        }
+    }
+}
+
+.menu{
+    @extend .g-clearlist;
+    height:100%;
+    box-sizing:border-box;
+    padding-bottom:$panel-logo-height-small;
+
+    @include media(min-height 360px){
+        padding-bottom:$panel-logo-height;
+    }
+}
+
+.menu__item{
+    display:block;
+    height:(100%)/5;
+    max-height:180px;
+    text-align:center;
+    position:relative;
+
+    &:before{
+        content:'';
+        display:block;
+        width:150px;
+        height:1px;
+        background:#a0a09f;
+        position:absolute;
+        top:0;
+        left:50%;
+        margin-left:-75px;
+    }
+
+
+    &:first-child{
+        &:before{
+            display:none;
+        }
+    }
+}
+
+.menu__link{
+    display:block;
+    height:100%;
+    min-height:18px;
+    font-family:$font-bold;
+    @include font-size(13px);
+    text-decoration:none;
+    text-transform:uppercase;
+    color:#fff;
+    position:relative;
+
+    &:hover,
+    &:active,
+    &.current{
+        color:$primary;
+    }
+
+    &.current{
+        cursor:default;
+    }
+}
+
+.menu__inner{
+    display:inline-block;
+    position:absolute;
+    width:100%;
+    left:0;
+    top:50%;
+    @include transform(translateY(-50%));
+    white-space:nowrap;
+}
+
+
+.no-csstransforms{
+    .menu__inner{
+        margin-top:-8px;
+    }
+}
+
+/*Homepage Menu Mod*/
+.page__inner--home{
+    .page__panel--menu{
+        background-color:$primary-dark;
+        background-color:rgba($primary-dark, .8);
+    }
+    .panel-logo{
+        display:none;
+    }
+    .menu__link{
+        color:$text-color;
+
+        &:hover,
+        &:active{
+            color:$primary;
+        }
+    }
+}

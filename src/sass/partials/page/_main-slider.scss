@@ -1,0 +1,100 @@
+﻿@import "../../modules/_base.scss";
+/*Homepage Main Slider*/
+.main-slider{
+    height:100%;
+    padding-bottom:25px;
+    box-sizing:border-box;
+    position:relative;
+    overflow:hidden;
+    
+    &:before,
+    &:after{
+        content:'';
+        display:block;
+        position:absolute;
+        left:0; right:0;
+    }
+
+    &:before{
+        top:0; bottom:25px;
+        background-color:rgba(#fff, .6);
+        @include transition(background-color 1s ease-in);
+        z-index:10;
+    }
+
+    &:after{
+        bottom:0;
+        height:25px;
+        background:$primary;
+    }
+
+    .bx-wrapper{
+        background:$primary-dark;
+    }
+
+    .bx-wrapper,
+    .bx-viewport{
+        height:100% !important;
+    }
+
+    &.active{
+        &:before{
+            background-color:rgba(#000, .4);
+        }
+    }
+}
+.main-slider__list{
+    @extend .g-clearlist;           
+    height:100%;
+    background:$primary-dark;
+    will-change:transform;
+}
+.main-slider__item{
+    float:left;
+    width:100%;
+    height:100%;
+}
+
+
+.main-slider__elem{
+    width:100%;
+    height:100%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.main-slider__elem--1{
+    background-image:url(../img/main-slider/bg-slider-1-xs.jpg);
+}
+.main-slider__elem--2{
+    background-image:url(../img/main-slider/bg-slider-2-xs.jpg);
+}
+.main-slider__elem--3{
+    background-image:url(../img/main-slider/bg-slider-3-xs.jpg);
+}
+
+@include media($mobile){
+    .main-slider__elem--1{
+        background-image:url(../img/main-slider/bg-slider-1-md.jpg);
+    }
+    .main-slider__elem--2{
+        background-image:url(../img/main-slider/bg-slider-2-md.jpg);
+    }
+    .main-slider__elem--3{
+        background-image:url(../img/main-slider/bg-slider-3-md.jpg);
+    }
+}
+
+@include media($desktop){
+    .main-slider__elem--1{
+        background-image:url(../img/main-slider/bg-slider-1.jpg);
+    }
+    .main-slider__elem--2{
+        background-image:url(../img/main-slider/bg-slider-2.jpg);
+    }
+    .main-slider__elem--3{
+        background-image:url(../img/main-slider/bg-slider-3.jpg);
+    }
+}
+

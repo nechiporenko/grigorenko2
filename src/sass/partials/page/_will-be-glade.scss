@@ -1,0 +1,21 @@
+﻿@import "../../modules/_base.scss";
+/*Will Be Glade - Last Text Block on page bottom*/
+.page__glade{
+    @extend .g-subtitle;
+    box-sizing:border-box;
+    padding-left:10px;
+    padding-right:10px;
+
+    @include media($large){
+        position:absolute;
+        width:50%;
+        bottom:62px;
+        left:0;
+        margin:0;
+        padding-left:50px;
+    }
+
+    @include media($extra-large){
+        padding-left:75px;
+    }
+}

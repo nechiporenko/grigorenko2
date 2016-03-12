@@ -1,0 +1,65 @@
+﻿@import "../../modules/_base.scss";
+/*Gallery Slider*/
+.gallery-slider{
+    position:relative;
+    margin-bottom:$project-line-height;
+}
+.gallery-slider__list{
+    @extend .g-clearlist;
+    margin-bottom:0 !important;
+}
+
+.gallery-slider__item{
+    margin:0 !important;
+}
+.gallery-slider__link{
+    display:block;
+    max-width:630px;
+    margin:0 auto;
+    position:relative;
+
+    &:after{
+        content:'';
+        display:block;
+        padding-top:100%;
+    }
+
+    &:hover,
+    &:active{
+        .gallery-slider__img{
+            opacity:.75;
+        }
+    }
+}
+
+.gallery-slider__img{
+   @extend .gallery__img;
+}
+
+.gallery-slider__nav{
+    margin-top:10px;
+    text-align:center;
+
+    [class^="icon-"], [class*=" icon-"]{
+        margin:0;
+    }  
+}
+
+.gallery-slider__arrow{
+    @extend .gallery__arrow;
+}
+
+@include media($large){
+    .gallery-slider__arrow{
+        position:absolute;
+        top:50%;
+        margin-top:-16px;
+    }
+
+    .gallery-slider__arrow--prev{
+        left:-40px;
+    }
+    .gallery-slider__arrow--next{
+        right:-40px;
+    }
+}

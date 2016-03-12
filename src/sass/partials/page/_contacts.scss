@@ -1,0 +1,79 @@
+﻿@import "../../modules/_base.scss";
+/*Contacts Page*/
+.contacts{
+    box-sizing:border-box;
+    margin-bottom:30px;
+    p{
+        margin-bottom:$project-line-height;
+    }
+
+    a{
+        text-decoration:none;
+        color:$text-color;
+
+        &:hover,
+        &:active{
+            color:$primary;
+        }
+    }
+}
+.contacts__info,
+.contacts__map{
+    box-sizing:border-box;
+    position:relative;
+    text-align:center;
+}
+
+@include media($large){
+    .contacts{
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        padding-left:40px;
+        padding-right:40px;
+        margin-bottom:150px;
+
+        .page__chair{
+            margin-bottom:0;
+            position:absolute;
+            left:0;
+            bottom:0;
+        }
+    }
+
+    .contacts__info,
+    .contacts__map{
+        display:table-cell;
+        vertical-align:top;
+    }
+
+    .contacts__info{
+        width:30%;
+        padding-right:20px;
+        padding-bottom:40px;
+        text-align:left;
+    }
+    .contacts__map{
+        width:70%;
+    }
+}
+
+
+
+@include media($extra-large){
+    .contacts{
+        padding-left:60px;
+        padding-right:60px;
+    }
+    .contacts__info{
+        width:22.6%;
+    }
+    .contacts__map{
+        width:77.4%;
+    }
+}
+
+.contacts__addr,
+.contacts__tel{
+    @include font-size(16px);
+}

@@ -1,0 +1,229 @@
+﻿@import "../../modules/_base.scss";
+/*Logo on Home Page*/
+.logo-box{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:20;//над слайдером
+    padding-top:$header-height-small;
+    padding-bottom:25px;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        padding-top:66px;
+    }
+}
+
+.logo-box__inner{
+    @extend .g-clearfix;
+    width:100%;
+    height:100%;
+    padding:0 18px;
+    position:relative;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        padding:0;
+    }
+}
+
+.logo-box__content{
+    width:100%;
+    height:100%;
+    max-width:486px;
+    margin:0 auto;
+
+    @include media($tablet){
+        width:486px;
+        margin:0 -243px 0 0;
+        position:absolute;
+        top:0;
+        right:50%;
+        min-height:400px;
+        will-change:right;
+        @include transition(all 1s ease-out);
+
+        &.moved{
+            right:0;
+            margin-right:18px;
+        }
+    }
+
+    @include media($desktop){
+        &.moved{
+            margin-right:80px;
+        }
+    }
+}
+
+.logo-box__top:before,
+.logo-box__top:after,
+.logo-box__bottom:before{
+    content:'';
+    display:block;
+    position:absolute;
+    background:#fff;
+    @include animation-timing-function(ease-in);
+    @include animation-iteration-count(1);
+    @include animation-fill-mode(forwards);
+    @include animation-duration(2s);
+}
+
+.logo-box__top{
+    height:60%;
+    min-height:130px;
+    box-sizing:border-box;
+    padding:0 20px;
+    position:relative;
+
+    &:before,
+    &:after{
+        width:2px;
+        height:0;
+    }
+
+    &:before{
+        top:0;
+        left:0;
+    }
+    &:after{
+        bottom:0;
+        right:0;
+    }
+
+    @include media($small){
+        height:50%;
+    }
+
+    @include media($tablet){
+        height:75%;
+        padding:0 77px;
+        position:relative;
+    }
+
+    &.active{
+        &:before,
+        &:after{
+            @include animation-name(logo-box-side);
+        }
+    }
+}
+
+
+.logo-box__bottom{
+    padding:20px;
+    text-align:center;
+    position:relative;
+
+    &:before{
+        top:0;
+        left:0;
+        height:2px;
+        width:0;
+    }
+
+    @include media($large){
+        padding-top:40px;
+    }
+
+    &.active{
+        &:before{
+            @include animation-name(logo-box-bottom);
+        }
+    }
+}
+
+
+@include keyframes(logo-box-side){
+    0%{
+        height:0;
+    }
+    100%{
+        height:100%;
+    }
+}
+
+@include keyframes(logo-box-bottom){
+    0%{
+        width:0;
+    }
+    100%{
+        width:100%;
+    }
+}
+
+
+.no-cssanimations{
+    .logo-box__top{
+        &:before,
+        &:after{
+            height:100%;
+        }
+    }
+
+    .logo-box__bottom{
+        &:before{
+            width:100%;
+        }
+    }
+}
+
+
+.logo-box__wrapper{
+    height:116px;
+    position:absolute;
+    width:100%;
+    left:0; 
+    //bottom:10px;
+    bottom:20px;
+    //padding:0 10px;
+    padding:0 20px;
+    box-sizing:border-box;
+
+    @include media($small){
+        bottom:40px;
+    }
+
+    @include media($desktop){
+        bottom:77px;
+    }
+}
+
+
+.logo-box__chair{ //анимация - см. _armchair.css
+    display:inline-block;
+    width:70px;
+    opacity:0;
+    @include transition(opacity 1s ease-out);
+
+    &.active{
+        opacity:1;
+    }
+}
+
+
+.logo-box__bottom .chair{
+    @include transform(translateZ(0));
+}
+
+@include media($tablet){
+    .moved .logo-box__bottom .chair{//при открытии меню, бокс с креслом сдвинем вправо с немольшим замедлением
+        @include animation-timing-function(ease-in);
+        @include animation-duration(1s);
+        @include animation-name(move-chair-right);
+    }
+}
+
+
+
+@include keyframes(move-chair-right){
+    0%, 100%{
+        @include transform(translateX(0));
+    }
+
+    40%{
+        @include transform(translateX(-60px));
+    }
+}

@@ -1,0 +1,114 @@
+﻿@import "../../modules/_base.scss";
+/*Gallery on Portfolio Item Page (Thumbnails)*/
+.gallery{
+    position:relative;
+    width:280px;
+    margin:0 auto $project-line-height;
+}
+
+.gallery__list{
+    @extend .g-clearlist;
+    margin-bottom:0 !important;
+    margin-top:0 !important;
+}
+.gallery__block{
+    margin:0 !important;
+}
+
+.gallery__list__inner{
+    margin-left:-5px;
+    margin-right:-5px;
+    @extend .g-clearfix;
+}
+
+.gallery__item{
+    float:left;
+    width:(100%)/3;
+    padding:0 5px;
+    margin-bottom:10px !important;
+    box-sizing:border-box;
+}
+
+.gallery__link{
+    display:block;
+    position:relative;
+
+    &:before{
+        content:'';
+        display:block;
+        position:absolute;
+        top:0; left:0;
+        bottom:0; right:0;
+        border:4px solid $primary;
+        z-index:1;
+        opacity:0;
+        @include transition(opacity .3s ease);
+    }
+
+    &:after{
+        content:'';
+        display:block;
+        padding-top:100%;
+    }
+
+    &:hover,
+    &:active{
+        .gallery__img{
+            opacity:.75;
+        }
+    }
+
+    &.current{
+        cursor:default;
+        &:before{
+            opacity:1;
+        }
+    }
+}
+
+.gallery__img{
+    @extend .g-img-centered;
+    @include transition(opacity .3s ease);
+    @include backface-visibility(hidden);
+}
+
+
+
+/*Gallery Arrows*/
+.gallery__nav{
+    text-align:center;
+    display:none; //покажем скриптом если картинок будет больше 9
+
+    [class^="icon-"], [class*=" icon-"]{
+        margin:0;
+    }  
+}
+.gallery__arrow{
+    display:inline-block;
+    margin:10px 5px;
+    height:32px;
+    width:32px;
+    text-align:center;
+    line-height:32px;
+    position:relative;
+
+    .bx-next,
+    .bx-prev{
+        position:absolute;
+        top:0; left:0; right:0; bottom:0;
+        text-decoration:none;
+        @include font-size(26px);
+        color:$text-color;
+
+        &:hover,
+        &:active{
+            color:$primary;
+        }
+
+        &.disabled{
+            opacity:.2;
+            color:$text-color;
+            cursor:default;
+        }
+    } 
+}

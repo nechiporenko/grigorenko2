@@ -1,0 +1,29 @@
+﻿@import "../../modules/_base.scss";
+/*Portfolio Single Item*/
+.b-gallery{
+    @extend .g-clearfix;
+}
+.b-gallery__info,
+.b-gallery__view{
+    box-sizing:border-box;
+}
+.b-gallery__info{
+    @include font-size(14px);
+    line-height:1.5;
+}
+
+.b-gallery__title{
+    @extend .g-title;
+    margin-bottom:$project-line-height;
+}
+
+@include media($large){
+    .b-gallery__info{
+        width:280px;
+        float:left;
+    }
+    .b-gallery__view{
+        margin-left:280px;
+        padding-left:5.4%;
+    }
+}

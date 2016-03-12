@@ -1,0 +1,56 @@
+﻿@import "../../modules/_base.scss";
+/*Portfolio Side Gallery*/
+.side-gallery{
+    margin:8px 0;
+    padding:35px 0;
+    position:relative;
+    text-align:center;
+}
+.side-gallery__list{
+    @extend .g-clearlist;
+}
+.side-gallery__item{
+   margin-bottom:10px;
+}
+
+.side-gallery__link{
+    display:block;
+    width:87px;
+    height:87px;
+    margin:0 auto;
+    position:relative;
+
+    &:hover,
+    &:active{
+        .side-gallery__img{
+            opacity:.75;
+        }
+    }
+}
+
+.side-gallery__img{
+    @extend .gallery__img;
+}
+
+.side-gallery__arrow{
+    @extend .gallery__arrow;
+    margin:0;
+    height:30px;
+    line-height:30px;
+    position:absolute;
+    left:50%;
+    margin-left:-16px;
+
+    .bx-next,
+    .bx-prev{
+        color:#fff;
+    }
+}
+
+.side-gallery__arrow--prev{
+    top:0;
+}
+.side-gallery__arrow--next{
+    bottom:0;
+}
+

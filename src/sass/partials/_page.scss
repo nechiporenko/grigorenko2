@@ -1,0 +1,247 @@
+﻿@import "../modules/_base.scss";
+/*Page*/
+.page__main{//главный контейнер
+    height:100%;
+    min-height:300px;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        min-height:600px;
+    }
+}
+
+.page__inner{
+    @extend .g-container;
+    padding-top:$header-height-small;
+    //height:100%;
+    background:#fff;
+    position:relative;//для плагина perfect-scroll
+    //overflow:hidden;
+
+    @include media($tablet){
+        padding-top:$header-height;
+    }
+
+    @include media($desktop){
+        height:100%;
+        overflow:hidden;
+    }
+
+    @include media($extra-large){
+        border-left:1px solid lighten($primary-dark, 5%);
+        border-right:1px solid lighten($primary-dark, 5%);
+    }
+}
+.page__inner--alt{
+    background:#dadada;
+}
+.page__inner--home{
+    padding-top:0;
+    height:100%;
+}
+
+
+.page__scroll{//центральный блок со скроллом
+    height:100%;
+    margin:0 auto;
+    //overflow:hidden;
+    position:relative;
+
+    @include media($desktop){
+        overflow:hidden;
+        margin-left:$panel-width;
+        margin-right:$panel-width;
+    }
+}
+
+.no-js .page__scroll{
+    overflow:auto;
+}
+
+.page__content{//блок для размещения основной информации
+    padding:20px 10px;
+    @include font-size($project-font-size);
+    line-height:strip-units($project-line-height/$project-font-size);
+    box-sizing:border-box;
+    position:relative;
+    z-index:1;
+
+    &:before{//разделим текст страницы по высоте, цветом
+        content:'';
+        display:block;
+        position:absolute;
+        height:35%;
+        left:0; right:0;
+        bottom:0;
+        background:#dadada;
+        z-index:-1;
+    }
+
+    @include media($desktop){
+        padding:60px 10px 10px;
+    }
+
+    p, ul, ol{
+        margin-bottom:2*$project-line-height;
+    }
+    ol{
+        padding-left:18px;
+    }
+    ul{
+        list-style-type:none;
+        padding:0;
+    }
+
+    ul, ol{
+        ul{
+            list-style-type:none;
+            margin:5px 0 0 0;
+            padding:0;
+        }
+    }
+    li{
+        margin-bottom:5px;
+    }
+}
+
+
+.page__content--altbg{
+    &:before{
+        height:33%;
+        bottom:33%;
+    }
+}
+
+.page__content--altfont{
+    font-family:$font-regular;
+    b, strong{
+        font-family:$font-bold;
+        font-weight:700;
+    }
+
+    i, em{
+        font-family:$font-italic;
+    }
+}
+
+/*Page Inner Grid*/
+.page__row,
+.page__column{
+    box-sizing:border-box;
+}
+
+.page__column{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+@include media($large){
+    .page__row{
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        padding-left:40px;
+        padding-right:40px;
+    }
+
+    .page__column{
+        display:table-cell;
+        width:50%;
+        padding-left:40px;
+        padding-right:0;
+        vertical-align:top;
+
+        &:first-child{
+            padding-left:0;
+            padding-right:40px;
+        }
+    }
+
+    .page__column--lb{
+        border-left:1px solid $text-color;
+    }
+    .page__column--bb{
+        padding-bottom:40px;
+        border-bottom:1px solid $text-color;
+    }
+    .page__column--rb{
+        border-right:1px solid $text-color;
+    }
+    .page__column--tb{
+        padding-top:40px;
+        border-top:1px solid $text-color;
+    }
+
+    .page__column--tp{
+        padding-top:40px;
+    }
+
+    .page__imgthumb{
+        margin-bottom:0;
+    }
+    .page__imgthumb--left{
+        margin-left:-40px;
+        padding-right:40px;
+    }
+}
+
+
+@include media($extra-large){
+    .page__row{
+        padding-left:60px;
+        padding-right:60px;
+    }
+    .page__column{
+        padding-left:65px;
+
+        &:first-child{
+            padding-right:65px;
+        }
+    }
+    .page__column--bb{
+        padding-bottom:60px;
+    }
+    
+    .page__column--tb{
+        padding-top:60px;
+    }
+
+    .page__column--tp{
+        padding-top:60px;
+    }
+    .page__imgthumb--left{
+        margin-left:-65px;
+        padding-right:65px;
+    }
+}
+
+
+/*Page Title*/
+.page__title{
+    @extend .g-title;
+    padding:20px 10px;
+    border:1px solid $border-color;
+
+    @include media($tablet){
+        padding:35px 25px 55px;
+    }
+}
+
+
+
+
+@import "page/_main-slider.scss";//бэкграунд-слайдер на Главной
+@import "page/_armchair.scss";//анимация кресла-качалки
+@import "page/_logo-box.scss";//Логотип на Главной
+@import "page/_border-thumb.scss";//дополнительные бордер-блоки на странице (About)
+@import "page/_will-be-glade.scss";//блок приветствия внизу страницы
+@import "page/_contacts.scss";//Страница Контакты
+@import "page/_portfolio-item.scss";//Портфолио - сетка страницы проекта
+@import "page/_gallery.scss";//Галерея превьюшек в портфолио-странице проекта
+@import "page/_gallery-slider.scss";//Слайдер работ в портфолио-странице проекта
+@import "page/_portfolio-grid.scss";//Портфолио - сетка работ
+
+
+
+
+
