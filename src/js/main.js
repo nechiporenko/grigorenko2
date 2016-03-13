@@ -13,7 +13,7 @@ jQuery(document).ready(function ($) {
     var $window = $(window),
         $html = $('html'),
         $body = $('body'),
-        isSlimScrollActive = false;//флаг состояния - запущен ли плагин скролла
+        isScrollActive = false;//флаг состояния - запущен ли плагин скролла
 
     $body.append('<div id="overlay" class="overlay"></div>');
     var $overlay = $('#overlay');//оверлей
@@ -221,12 +221,12 @@ jQuery(document).ready(function ($) {
                 wheelSpeed: 1,
                 minScrollbarLength: 30
             });
-            isSlimScrollActive = true;
+            isScrollActive = true;
         }
 
         method.destroyJSscroll = function () {
             $scroll.perfectScrollbar('destroy');
-            isSlimScrollActive = false;
+            isScrollActive = false;
         }
 
         method.updateJSscroll = function () {
@@ -241,13 +241,13 @@ jQuery(document).ready(function ($) {
                 //ресайз окончен - пересчитываем
                 winW = verge.viewportW();
                 if (winW >= 992) {//если десктоп
-                    if (!isSlimScrollActive) {
+                    if (!isScrollActive) {
                         method.initJSscroll();//если перешли с мелкого размера на десктоп - подключили плагин
                     } else {
                         method.updateJSscroll();
                     }
                 } else {//если мелкий экран
-                    if (isSlimScrollActive) {//и плагин активен
+                    if (isScrollActive) {//и плагин активен
                         method.destroyJSscroll();//выключаем его
                     }
                 }
@@ -261,16 +261,25 @@ jQuery(document).ready(function ($) {
             }
         }
 
+        //проверка при первой загрузке страницы
         winW = verge.viewportW();
         if (winW >= 992) {
             method.initJSscroll();
+
+            $scroll.imagesLoaded(function () {
+                method.updateJSscroll(); //после загрузки всех изображений в контейнере - обновим скролл
+            });
         }
 
-        $window.bind('resize', method.startResize);
 
-        return isSlimScrollActive; //передадим значение для функции анимации картинок при скролле
+
+        $window.bind('resize', method.startResize);//отслежиаем ресайз
+
+        return isScrollActive; //передадим значение для функции анимации картинок при скролле
     }
-    if ($('.js-scroll').length) { initScroll();}
+    if ($('.js-scroll').length) { initScroll(); }
+
+
     //
     // Галерея на странице Портфолио
     //---------------------------------------------------------------------------------------
@@ -460,7 +469,7 @@ jQuery(document).ready(function ($) {
         method.checkScroll = function (el) {
             var imagePos = el.offset().top,
                 fromTop;
-            if (isSlimScrollActive) {
+            if (isScrollActive) {
                 fromTop = $window.outerHeight();
                 delta = -100;
             } else {
@@ -476,7 +485,7 @@ jQuery(document).ready(function ($) {
         method.checkLoad();
 
         $page.bind('scroll', function () {
-            if (isSlimScrollActive) {//если активен плагин скролла - отслеживаем скролл блока
+            if (isScrollActive) {//если активен плагин скролла - отслеживаем скролл блока
                 $elem.each(function () {
                     method.checkScroll($(this));
                 });
@@ -484,7 +493,7 @@ jQuery(document).ready(function ($) {
         });
 
         $window.bind('scroll', function () {
-            if (!isSlimScrollActive) {//если плагин не активен - отслеживаем скролл страницы
+            if (!isScrollActive) {//если плагин не активен - отслеживаем скролл страницы
                 $elem.each(function () {
                     method.checkScroll($(this));
                 });
