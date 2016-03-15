@@ -4,6 +4,12 @@
     position:relative;
     margin-bottom:$project-line-height;
 }
+@media(min-width:992px) and (max-width:1200px){
+    .gallery-slider{
+        padding-right:10px;
+    }
+}
+
 .gallery-slider__list{
     @extend .g-clearlist;
     margin-bottom:0 !important;

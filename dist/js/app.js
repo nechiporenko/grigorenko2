@@ -484,8 +484,8 @@ jQuery(document).ready(function ($) {
                     hideControlOnEnd: true,
                     nextSelector: '.side-gallery__arrow--next',
                     prevSelector: '.side-gallery__arrow--prev',
-                    nextText: '<i class="icon-up"></i>',
-                    prevText: '<i class="icon-down"></i>',
+                    nextText: '<i class="icon-down"></i>',
+                    prevText: '<i class="icon-up"></i>',
                 },
                 winW = $window.width();
             if (winW < 1600) {

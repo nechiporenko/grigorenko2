@@ -157,6 +157,10 @@
         }
     }
 
+    .page__column--has-img{
+        vertical-align:middle;
+    }
+
     .page__column--lb{
         border-left:1px solid $text-color;
     }
