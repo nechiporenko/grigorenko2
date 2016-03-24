@@ -1,7 +1,20 @@
 ﻿@import "../../modules/_base.scss";
 /*Portfolio Grid*/
 .b-grid{
-    @extend .page__row;
+    //@extend .page__row;
+    box-sizing:border-box;
+
+    @include media($large){
+        padding-left:40px;
+        padding-right:40px;
+    }
+
+    @include media($extra-large){
+        padding-left:60px;
+        padding-right:60px;
+    }
+
+
     .page__chair{
         margin:50px 0;
     }
@@ -111,9 +124,17 @@
     position:relative;
     overflow:hidden;
 
+    //&:hover{
+    //    .b-item__content{
+    //        left:0;
+    //    }
+    //}
+
+
     &:hover{
         .b-item__content{
-            left:0;
+            top:0;
+            opacity:1;
         }
     }
 }
@@ -121,18 +142,26 @@
 .b-item__content{
     position:absolute;
     box-sizing:border-box;
-    top:0;
-    left:-360px;
-    will-change:left;
+    //top:0;
+    //left:-360px;
+    //will-change:left;
     width:100%;
-    height:100%;
+    //height:100%;
     padding:20px;
-    border:1px solid $text-color;
-    box-shadow:inset 0 0 3px rgba($text-color, .7);
+    //border:1px solid $text-color;
+    //box-shadow:inset 0 0 3px rgba($text-color, .7);
     background:#fff;
-    background:rgba(#fff, .92);
-    overflow:hidden;
-    @include transition(left .3s linear);
+    background:rgba(#fff, .8);
+    //overflow:hidden;
+    //@include transition(left .3s linear);
+
+
+    top:-20px;
+    will-change:top;
+    opacity:0;
+    @include transition-property(opacity, top);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(.4s);
 
     p{
         margin:10px 0;
@@ -141,17 +170,35 @@
 
 .b-item__content--alt{
     background:#dadada;
-    background:rgba(#dadada, .92);
+    background:rgba(#dadada, .8);
 }
 
 
-.b-item__title{
-    @extend .g-title;
-    margin:0;
-}
+//.b-item__title{
+//    @extend .g-title;
+//    margin:0;
+//}
 .b-item__more{
     display:block;
     white-space:nowrap;
     color:$primary;
     text-decoration:underline;
+}
+
+
+.b-item__category,
+.b-item__name{
+    display:block;
+    font-family:$font-regular;
+    color:$title-color;
+    line-height:1.1;
+}
+
+.b-item__category{
+    margin-bottom:10px;
+    @include font-size(13px);
+}
+.b-item__name{
+    @include font-size(18px);
+    text-align:right;
 }

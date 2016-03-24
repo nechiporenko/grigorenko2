@@ -13,10 +13,8 @@
 .page__inner{
     @extend .g-container;
     padding-top:$header-height-small;
-    //height:100%;
     background:#fff;
     position:relative;//для плагина perfect-scroll
-    //overflow:hidden;
 
     @include media($tablet){
         padding-top:$header-height;
@@ -44,7 +42,6 @@
 .page__scroll{//центральный блок со скроллом
     height:100%;
     margin:0 auto;
-    //overflow:hidden;
     position:relative;
 
     @include media($desktop){
