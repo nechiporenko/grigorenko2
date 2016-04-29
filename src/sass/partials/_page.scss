@@ -63,7 +63,7 @@
     position:relative;
     z-index:1;
 
-    &:before{//разделим текст страницы по высоте, цветом
+    /*&:before{//разделим текст страницы по высоте, цветом
         content:'';
         display:block;
         position:absolute;
@@ -72,7 +72,7 @@
         bottom:0;
         background:#dadada;
         z-index:-1;
-    }
+    }*/
 
     @include media($desktop){
         padding:60px 10px 10px;
@@ -102,12 +102,12 @@
 }
 
 
-.page__content--altbg{
+/*.page__content--altbg{
     &:before{
         height:33%;
         bottom:33%;
     }
-}
+}*/
 
 .page__content--altfont{
     font-family:$font-regular;

@@ -202,3 +202,12 @@
     @include font-size(18px);
     text-align:right;
 }
+
+.b-item__img{
+    @include filter(grayscale(100%));
+    @include transition(filter .3s ease-in);
+
+    &:hover{
+        @include filter(grayscale(0));
+    }
+}

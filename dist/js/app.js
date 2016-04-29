@@ -179,6 +179,7 @@ jQuery(document).ready(function ($) {
                 pager: false,
                 controls: false,
                 mode: 'fade', //horizontal, vertical, fade
+                speed: 5000,
                 pause: 9000,
             }
             $slider.reloadSlider(options);//перезагрузили с новыми опциями
@@ -364,7 +365,8 @@ jQuery(document).ready(function ($) {
                 nextText: '<i class="icon-right"></i>',
                 prevText: '<i class="icon-left"></i>',
                 infiniteLoop: false,
-                hideControlOnEnd:true
+                hideControlOnEnd: true,
+                useCSS:false
             });
             isGalleryStart = true;
         }
@@ -401,6 +403,7 @@ jQuery(document).ready(function ($) {
                 prevSelector: '.gallery-slider__arrow--prev',
                 nextText: '<i class="icon-right"></i>',
                 prevText: '<i class="icon-left"></i>',
+                useCSS:false,
                 onSlideBefore: function ($slideElement, oldIndex, newIndex) {//перед перемоткой
                     var $img = $slideElement.find('img');
                     method.loadSliderImage($img);//подгрузили картинку
@@ -486,6 +489,7 @@ jQuery(document).ready(function ($) {
                     prevSelector: '.side-gallery__arrow--prev',
                     nextText: '<i class="icon-down"></i>',
                     prevText: '<i class="icon-up"></i>',
+                    useCSS:false
                 },
                 winW = $window.width();
             if (winW < 1600) {
