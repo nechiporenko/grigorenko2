@@ -63,16 +63,6 @@
     position:relative;
     z-index:1;
 
-    /*&:before{//разделим текст страницы по высоте, цветом
-        content:'';
-        display:block;
-        position:absolute;
-        height:35%;
-        left:0; right:0;
-        bottom:0;
-        background:#dadada;
-        z-index:-1;
-    }*/
 
     @include media($desktop){
         padding:60px 10px 10px;
@@ -102,13 +92,6 @@
 }
 
 
-/*.page__content--altbg{
-    &:before{
-        height:33%;
-        bottom:33%;
-    }
-}*/
-
 .page__content--altfont{
     font-family:$font-regular;
     b, strong{
@@ -131,6 +114,13 @@
     padding-left:10px;
     padding-right:10px;
 }
+
+@include media(max-width 1199px){
+    .page__imgthumb{
+        text-align:center;
+    }
+}
+
 
 @include media($large){
     .page__row{
@@ -218,14 +208,32 @@
 
 
 /*Page Title*/
-.page__title{
+.page__title{//заголовок - ссылка с рамкой
     @extend .g-title;
     padding:20px 10px;
     border:1px solid $border-color;
+    text-decoration:none;
+
+    &:hover,
+    &:active{
+        border-color:$primary;
+        .g-title{
+            color:$primary;
+        }
+    }
 
     @include media($tablet){
         padding:35px 25px 55px;
     }
+
+    .g-title{
+        margin:0;
+        @include transition(color .15s ease-in);
+    }
+}
+
+.page__more{
+    @extend .b-item__more;
 }
 
 
