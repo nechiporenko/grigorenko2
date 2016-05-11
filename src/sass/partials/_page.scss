@@ -144,6 +144,11 @@
         }
     }
 
+    .page__column--right-text{
+        padding-left:0 !important;
+        padding-right:40px;
+    }
+
     .page__column--has-img{
         vertical-align:middle;
     }
@@ -189,6 +194,11 @@
             padding-right:65px;
         }
     }
+
+    .page__column--right-text{
+        padding-right:65px;
+    }
+
     .page__column--bb{
         padding-bottom:60px;
     }
