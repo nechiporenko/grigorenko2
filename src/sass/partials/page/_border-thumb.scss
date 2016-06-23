@@ -25,6 +25,9 @@
     .border-thumb--tp{
         padding-top:40px;
     }
+    .border-thumb--rp{
+        padding-right:40px;
+    }
 }
 
 @include media($extra-large){
@@ -43,5 +46,8 @@
 
     .border-thumb--tp{
         padding-top:60px;
+    }
+    .border-thumb--rp{
+        padding-right:65px;
     }
 }
