@@ -1,0 +1,78 @@
+﻿@import "../../modules/_base.scss";
+/*Workshop Page*/
+.b-work{
+    box-sizing:border-box;
+    margin-bottom:35px;
+}
+
+.b-work__col{
+    box-sizing:border-box;
+    min-height:1px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:center;
+}
+
+
+.b-work__title{
+    display:block;
+    padding:0 10px;
+    text-align:center;
+    @extend .g-subtitle;
+    margin-bottom:$project-line-height;
+}
+
+@include media($large){
+    .b-work{
+        padding-left:40px;
+        padding-right:40px;
+    }
+
+    .b-work__col{
+        width:50%;
+        margin:0;
+        float:left;
+        max-width:none;
+        padding-left:25px;
+        padding-right:0;
+
+        &:first-child{
+            padding-left:0;
+            padding-right:25px;
+        }
+
+        &.b-work__col--full{
+            width:100%;
+            padding-right:0 !important;
+        }
+    }
+
+    .b-work__title{
+        margin-top:$project-line-height;
+        @include font-size(18px);
+        letter-spacing:rem(6px);
+    }
+}
+
+@include media($extra-large){
+    .b-work{
+        padding-left:60px;
+        padding-right:60px;
+    }
+    .b-work__col{
+        padding-left:35px;
+
+        &:first-child{
+            padding-right:35px;
+        }
+    }
+
+    .b-work__title{
+        margin:24px 0;
+        font-size:rem(21px);
+        letter-spacing:rem(9px);
+    }
+}
