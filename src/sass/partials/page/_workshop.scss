@@ -2,7 +2,7 @@
 /*Workshop Page*/
 .b-work{
     box-sizing:border-box;
-    margin-bottom:35px;
+    margin:0 0 30px;
 }
 
 .b-work__col{
@@ -25,10 +25,16 @@
     margin-bottom:$project-line-height;
 }
 
+@include media($desktop){
+    .b-work{
+        margin-top:-20px;
+    }
+}
+
 @include media($large){
     .b-work{
-        padding-left:40px;
-        padding-right:40px;
+        padding-left:36px;
+        padding-right:36px;
     }
 
     .b-work__col{
@@ -36,12 +42,12 @@
         margin:0;
         float:left;
         max-width:none;
-        padding-left:25px;
+        padding-left:23px;
         padding-right:0;
 
         &:first-child{
             padding-left:0;
-            padding-right:25px;
+            padding-right:23px;
         }
 
         &.b-work__col--full{
@@ -51,28 +57,15 @@
     }
 
     .b-work__title{
-        margin-top:$project-line-height;
-        @include font-size(18px);
-        letter-spacing:rem(6px);
+        margin:35px 0;
+        @include font-size(16px);
+        letter-spacing:rem(8px);
     }
 }
 
 @include media($extra-large){
-    .b-work{
-        padding-left:60px;
-        padding-right:60px;
-    }
-    .b-work__col{
-        padding-left:35px;
-
-        &:first-child{
-            padding-right:35px;
-        }
-    }
-
     .b-work__title{
-        margin:24px 0;
-        font-size:rem(21px);
-        letter-spacing:rem(9px);
+        margin:43px 0;
+        letter-spacing:rem(13px);
     }
 }
