@@ -7,6 +7,7 @@
 // Слайдер работ Портфолио в боковой панели
 // Анимация изображений при скролле
 // Если браузер не знает о svg-картинках
+// Hover для тач-девайсов (на странице Портфолио)
 
 jQuery(document).ready(function ($) {
     //Кэшируем
@@ -319,7 +320,8 @@ jQuery(document).ready(function ($) {
                 captionsData: 'caption',
                 close: true,
                 closeText: '<i class="icon-cancel"></i>',
-                showCounter:true
+                showCounter: true,
+                widthRatio: 1
             });
         }
 
@@ -516,5 +518,16 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
+    //
+    // Hover для тач-девайсов (на странице Портфолио)
+    //---------------------------------------------------------------------------------------
+    function addHoverClass(){
+        $('.b-grid__link').bind('touchstart touchend', function (e) {
+            e.preventDefault();
+            $(this).toggleClass('hover');
+        });
+    }
+    if ($('.js-grid').length) {
+        addHoverClass();
+    }
 });
