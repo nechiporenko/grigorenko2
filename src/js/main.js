@@ -522,8 +522,7 @@ jQuery(document).ready(function ($) {
     // Hover для тач-девайсов (на странице Портфолио)
     //---------------------------------------------------------------------------------------
     function addHoverClass(){
-        $('.b-grid__link').bind('touchstart touchend', function (e) {
-            e.preventDefault();
+        $('.b-grid__link').bind('touchstart touchend', function () {
             $(this).toggleClass('hover');
         });
     }
