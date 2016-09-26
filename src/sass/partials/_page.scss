@@ -6,7 +6,8 @@
     box-sizing:border-box;
 
     @include media($tablet){
-        min-height:600px;
+        //min-height:600px;
+        min-height:400px;
     }
 }
 

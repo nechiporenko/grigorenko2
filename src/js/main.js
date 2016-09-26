@@ -397,7 +397,10 @@ jQuery(document).ready(function ($) {
     //---------------------------------------------------------------------------------------
     function initSideSlider() {
         var $slider = $('.js-sideslider'),
-            count,
+            count, //кол-во слайдов
+            rtime, //переменные для пересчета ресайза окна с задержкой delta - будем показывать разное кол-во слайдов на разных разрешениях
+            timeout = false,
+            delta = 200,
             method = {};
 
         method.getSliderSettings = function () {
@@ -429,27 +432,60 @@ jQuery(document).ready(function ($) {
                     prevSelector: '.side-gallery__arrow--prev',
                     nextText: '<i class="icon-down"></i>',
                     prevText: '<i class="icon-up"></i>',
-                    useCSS:false
+                    useCSS: false
                 },
-                winW = $window.width();
-            if (winW < 1600) {
+                //winW = $window.width(),
+                winH = $.viewportH();
+
+            //if (winW < 1600) {
+            //    setting = $.extend(settings2, common);
+            //}
+            //if (winW >= 1600) {
+            //    setting = $.extend(settings3, common);
+            //}
+
+            if (winH < 600) {
+                setting = $.extend(settings1, common);
+            };
+            if (winH >= 600 && winH < 750) {
                 setting = $.extend(settings2, common);
-            }
-            if (winW >= 1600) {
+            };
+
+            if (winH >= 750) {
                 setting = $.extend(settings3, common);
             }
+
             return setting;
         }
 
         method.reloadSliderSettings = function () {
             $slider.reloadSlider($.extend(method.getSliderSettings(), { startSlide: $slider.getCurrentSlide() }));
-        }
+        };
+
+        method.endResize = function () {
+            if (new Date() - rtime < delta) {
+                setTimeout(method.endResize, delta);
+            } else {
+                timeout = false;
+                //ресайз окончен - пересчитываем
+                method.reloadSliderSettings();
+            }
+        };
+
+        method.startResize = function () {
+            rtime = new Date();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(method.endResize, delta);
+            }
+        };
 
         count = $slider.children('li').length;
         if (count > 4) {
             $slider.bxSlider(method.getSliderSettings());//если больше 4 элементов в списке, запускаем слайдер
-        }
-    }
+            $(window).bind('resize', method.startResize);//пересчитываем кол-во видимых элементов при ресайзе окна с задержкой .2с
+        };
+    };
     if ($('.js-sideslider').length) { initSideSlider() }
 
     //
